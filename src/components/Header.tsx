@@ -1,3 +1,5 @@
+import { ThemeToggle } from "./ThemeToggle";
+
 export function Header() {
   return (
     <header className="header">
@@ -7,6 +9,7 @@ export function Header() {
           <a className="nav__link" href="#">Главная</a>
           <a className="nav__link" href="#">Компоненты</a>
           <a className="nav__link" href="#">О нас</a>
+          <ThemeToggle />
         </nav>
       </div>
     </header>

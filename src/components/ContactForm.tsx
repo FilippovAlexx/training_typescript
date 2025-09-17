@@ -1,9 +1,17 @@
-// src/components/ContactForm.tsx
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Button } from "./Button";
 
-export function ContactForm() {
+export type ContactPayload = {
+  name: string;
+  email: string;
+  message: string;
+  ts: string;
+};
+
+type Props = { onSend?: (data: ContactPayload) => void };
+
+export function ContactForm({ onSend }: Props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -11,20 +19,11 @@ export function ContactForm() {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-
-    const payload = {
-      name,
-      email,
-      message,
-      ts: new Date().toISOString(),
-    };
-
-    // ⬇️ это увидишь в DevTools → Console (F12)
+    const payload = { name, email, message, ts: new Date().toISOString() };
     console.log("[ContactForm] feedback payload:", payload);
-
+    onSend?.(payload);
     setSent(true);
-    // Если хочется чистить поля после отправки:
-    // setName(""); setEmail(""); setMessage("");
+    // setName(""); setEmail(""); setMessage(""); // если хочешь очищать поля
   };
 
   if (sent) {

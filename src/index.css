@@ -169,3 +169,31 @@ main {
   padding-block: 8px;   /* или 0, если хочешь совсем без воздуха */
   /* padding-left/right оставим 24px из .container */
 }
+
+:root[data-theme="light"] {
+  --bg: #f7fafc;
+  --panel: #ffffff;
+  --panel-2: #f3f4f6;
+  --text: #111827;
+  --muted: #4b5563;
+  --brand: #3b82f6;
+  --brand-2: #2563eb;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+:root[data-theme="light"] body {
+  background: radial-gradient(1200px 800px at 15% 10%, #e8eef9 0%, #f7fafc 50%) no-repeat, var(--bg);
+}
+
+/* ===== Feedback list ===== */
+.feedback { display: grid; gap: 12px; }
+.feedback__head {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.feedback__list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.feedback__item {
+  padding: 10px 12px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+}
+.muted { color: var(--muted); }
